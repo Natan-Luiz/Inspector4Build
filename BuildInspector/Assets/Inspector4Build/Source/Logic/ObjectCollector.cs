@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -58,12 +59,14 @@ namespace Inspector4Build
             RuntimeObject obj = new RuntimeObject();
             obj.childList = new List<RuntimeObject>();
 
-            for (int i = 0; i< go.transform.childCount; i++)
+            if (go.name != "InspectorWindow") //Don't want to process the Inspecto4Build itself
             {
-                partialRuntimeObjectsList.AddRange(ProcessObject(go.transform.GetChild(i).gameObject));
-                obj.childList.Add(partialRuntimeObjectsList[partialRuntimeObjectsList.Count - 1]);
+                for (int i = 0; i < go.transform.childCount; i++)
+                {
+                    partialRuntimeObjectsList.AddRange(ProcessObject(go.transform.GetChild(i).gameObject));
+                    obj.childList.Add(partialRuntimeObjectsList[partialRuntimeObjectsList.Count - 1]);
+                }
             }
-
             
             obj.name = go.name;
             obj.transform = go.transform;

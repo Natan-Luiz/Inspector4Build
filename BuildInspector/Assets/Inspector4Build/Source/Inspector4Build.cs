@@ -35,6 +35,15 @@ namespace Inspector4Build
             collector.CollectObjectsInScene();
         }
 
+        public RuntimeObject[] GetHierarchy()
+        {
+            return collector.GetObjectsInScene(true);
+        }
+
+        public SceneDetails GetSceneData()
+        {
+            return sceneDetails;
+        }
     }
 
 }
