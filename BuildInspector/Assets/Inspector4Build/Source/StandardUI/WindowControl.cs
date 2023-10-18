@@ -10,6 +10,7 @@ namespace Inspector4Build.UnityUI
     {
         Vector3 posDiff;
         public Inspector4Build i4B;
+        public RuntimeObject currentObject;
 
         private void Start()
         {

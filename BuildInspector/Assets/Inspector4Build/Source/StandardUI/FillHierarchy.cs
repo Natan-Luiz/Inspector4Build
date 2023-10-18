@@ -18,6 +18,12 @@ namespace Inspector4Build.UnityUI
         // Start is called before the first frame update
         public void OnActivate()
         {
+           for(int i = 0; i< transform.childCount; i++)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+                counter = 0;
+            }
+           
             wc = FindObjectOfType<WindowControl>();
             RuntimeObject[] objs = wc.i4B.GetHierarchy();
 
@@ -26,6 +32,7 @@ namespace Inspector4Build.UnityUI
                 CreateObject(0, objs[i]);
             }
 
+            GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 30 * transform.childCount);
         }
 
         public void CreateObject(int lvl, RuntimeObject obj)

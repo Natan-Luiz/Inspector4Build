@@ -1,21 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 namespace Inspector4Build.UnityUI
 {
     public class FillObjectElement : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        WindowControl wc;
+
+        public void OnActivate()
+        {
+            wc = FindObjectOfType<WindowControl>();
+            RuntimeObject obj = wc.currentObject;
+
+            
+
+        }
+
+        public void UpdateTransform()
         {
 
         }
 
-        // Update is called once per frame
         void Update()
         {
-
+            UpdateTransform();
         }
     }
 }
