@@ -38,6 +38,7 @@ namespace Inspector4Build.UnityUI
         public void CreateObject(int lvl, RuntimeObject obj)
         {
             GameObject go = Instantiate(clickableElement, transform);
+            go.GetComponent<Button>().onClick.AddListener(() => SelectObject(obj));
             go.transform.position = new Vector3(go.transform.position.x + lvl * 15, go.transform.position.y + counter * -30, 0);
             go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = obj.name;
             counter++;
@@ -46,6 +47,11 @@ namespace Inspector4Build.UnityUI
             {
                 CreateObject(lvl + 1, obj.childList[i]);
             }
+        }
+
+        public void SelectObject(RuntimeObject obj)
+        {
+            wc.currentObject = obj;
         }
 
         // Update is called once per frame

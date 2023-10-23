@@ -8,7 +8,7 @@ namespace Inspector4Build
 
     public class SceneDetails
     {
-        public int FrameRate { get { return (int)(1000f / Time.deltaTime); } }
+        public int FrameRate { get { return (int)(1f / Time.deltaTime); } }
         public string SceneName { get { return SceneManager.GetActiveScene().name; } }
         public string UnityVersion { get { return Application.unityVersion; } }
 

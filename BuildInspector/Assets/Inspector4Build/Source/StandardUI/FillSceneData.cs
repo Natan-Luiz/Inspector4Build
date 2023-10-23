@@ -11,19 +11,26 @@ namespace Inspector4Build.UnityUI
         public TextMeshProUGUI fps;
         public TextMeshProUGUI unity;
         public TextMeshProUGUI scene;
+        public float updateFrequency;
+        private float updateTime = 0;
         SceneDetails sd;
         public void OnActivate()
         {
             wc = FindObjectOfType<WindowControl>();
             sd = wc.i4B.GetSceneData();
-            fps.text = sd.FrameRate.ToString();
+            fps.text = "FPS\n" + sd.FrameRate.ToString();
             unity.text = "Unity Version: " + sd.UnityVersion.ToString();
             scene.text = sd.SceneName.ToString();
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
-            fps.text = sd.FrameRate.ToString();
+            if(updateFrequency < updateTime && updateFrequency > 0)
+            {
+                fps.text = "FPS\n" + sd.FrameRate.ToString();
+                updateTime = 0;
+            }
+            updateTime+= Time.deltaTime;
         }
     }
 }
