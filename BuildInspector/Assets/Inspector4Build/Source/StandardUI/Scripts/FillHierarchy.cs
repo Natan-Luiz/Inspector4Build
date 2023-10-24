@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-
 namespace Inspector4Build.UnityUI
 {
 
@@ -13,7 +12,7 @@ namespace Inspector4Build.UnityUI
         public GameObject clickableElement;
         private int counter = 0;
         WindowControl wc;
-
+        RuntimeObject[] objs;
 
         // Start is called before the first frame update
         public void OnActivate()
@@ -25,11 +24,17 @@ namespace Inspector4Build.UnityUI
             }
            
             wc = FindObjectOfType<WindowControl>();
-            RuntimeObject[] objs = wc.i4B.GetHierarchy();
+            StartCoroutine("Worker");
+        }
+
+        IEnumerator Worker()
+        {
+            objs = wc.i4B.GetHierarchy();
 
             for (int i = 0; i < objs.Length; i++)
             {
                 CreateObject(0, objs[i]);
+                yield return null;
             }
 
             GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 30 * transform.childCount);

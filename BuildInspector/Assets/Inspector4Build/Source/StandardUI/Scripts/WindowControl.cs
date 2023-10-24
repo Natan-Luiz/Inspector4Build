@@ -13,36 +13,10 @@ namespace Inspector4Build.UnityUI
         public RuntimeObject currentObject;
 
 
-        private void Start()
+        private void Awake()
         {
             i4B = new Inspector4Build();
             i4B.Initialize();
-        }
-
-        void Update()
-        {
-            KeyboardShortcuts();
-        }
-
-        private void KeyboardShortcuts()
-        {
-            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyUp(KeyCode.I)) // CTRL + I -> Start Tool
-            {
-                transform.GetChild(0).gameObject.SetActive(true);
-            }
-            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyUp(KeyCode.X)) // CTRL + X -> Stop Tool
-            {
-                Debug.Log("Shortcut not implemented yet");
-            }
-            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyUp(KeyCode.L)) // CTRL + L -> Show Tool
-            {
-                Debug.Log("Shortcut not implemented yet");
-            }
-            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyUp(KeyCode.H)) // CTRL + H -> Hide Tool
-            {
-                transform.GetChild(0).gameObject.SetActive(false);
-            }
-
         }
 
         public void OnBeginDrag(PointerEventData eventData)

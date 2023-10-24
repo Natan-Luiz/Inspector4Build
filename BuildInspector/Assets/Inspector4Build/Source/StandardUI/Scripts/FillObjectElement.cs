@@ -34,6 +34,10 @@ namespace Inspector4Build.UnityUI
 
             wc = FindObjectOfType<WindowControl>();
             RuntimeObject obj = wc.currentObject;
+
+            if (obj.gameObject == null)
+                return;
+
             storedObject = obj.gameObject;
             float position = 0;
 
@@ -61,7 +65,10 @@ namespace Inspector4Build.UnityUI
 
         public void UpdateTransform()
         {
-            storedTransform.GetComponent<FillComponent>().FillData(ComponentHandler.ProcessComponent(storedObject.transform), "Transform");
+            if (storedTransform != null)
+            {
+                storedTransform.GetComponent<FillComponent>().FillData(ComponentHandler.ProcessComponent(storedObject.transform), "Transform");
+            }
         }
 
         void Update()
