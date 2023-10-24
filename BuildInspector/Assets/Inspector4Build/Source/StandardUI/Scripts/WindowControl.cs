@@ -12,6 +12,7 @@ namespace Inspector4Build.UnityUI
         public Inspector4Build i4B;
         public RuntimeObject currentObject;
 
+
         private void Start()
         {
             i4B = new Inspector4Build();
@@ -27,7 +28,7 @@ namespace Inspector4Build.UnityUI
         {
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyUp(KeyCode.I)) // CTRL + I -> Start Tool
             {
-                Debug.Log("Shortcut not implemented yet");
+                transform.GetChild(0).gameObject.SetActive(true);
             }
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyUp(KeyCode.X)) // CTRL + X -> Stop Tool
             {
@@ -39,7 +40,7 @@ namespace Inspector4Build.UnityUI
             }
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyUp(KeyCode.H)) // CTRL + H -> Hide Tool
             {
-                Debug.Log("Shortcut not implemented yet");
+                transform.GetChild(0).gameObject.SetActive(false);
             }
 
         }

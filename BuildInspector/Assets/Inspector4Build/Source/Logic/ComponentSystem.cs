@@ -17,7 +17,7 @@ namespace Inspector4Build
 
     public class ComponentSystem
     {
-        string name;
+        public string name;
 
         public ComponentType type;
 
@@ -31,7 +31,7 @@ namespace Inspector4Build
         {
             ComponentSystem component = new ComponentSystem();
 
-            component.name = original.name;
+            component.name = original.ToString().Replace(original.name, "");
             
             if(original.GetType() == typeof(Rigidbody))
                 component.type = ComponentType.Rigidbody;

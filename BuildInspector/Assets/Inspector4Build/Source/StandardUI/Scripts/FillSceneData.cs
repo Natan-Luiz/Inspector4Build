@@ -14,6 +14,11 @@ namespace Inspector4Build.UnityUI
         public float updateFrequency;
         private float updateTime = 0;
         SceneDetails sd;
+        private void Start()
+        {
+            OnActivate();
+        }
+
         public void OnActivate()
         {
             wc = FindObjectOfType<WindowControl>();

@@ -77,14 +77,15 @@ namespace Inspector4Build
                 obj.material = go.GetComponent<MeshRenderer>().material;
             }
 
-            ProcessComponents(obj);
+            
+            obj = ProcessComponents(obj);
 
             partialRuntimeObjectsList.Add(obj);
 
             return partialRuntimeObjectsList;
         }
 
-        private void ProcessComponents(RuntimeObject obj)
+        private RuntimeObject ProcessComponents(RuntimeObject obj)
         {
             Component[] components =  obj.gameObject.GetComponents<Component>();
             obj.components = new List<ComponentSystem>();
@@ -104,6 +105,7 @@ namespace Inspector4Build
                     obj.components.Add(ComponentSystem.GetComponent(components[i]));
                 }
             }
+            return obj;
         }
 
         private string FullObjectName(GameObject go)
